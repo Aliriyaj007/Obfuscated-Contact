@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obfuscated Contact | Protect Your Contact Info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & BASE STYLES ===== */
+        :root {
+            /* Default theme (Material Light) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --text-tertiary: #80868b;
+            --accent-primary: #1a73e8;
+            --accent-secondary: #e8f0fe;
+            --border-color: #dadce0;
+            --border-focus: #1a73e8;
+            --shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --shadow-elevated: 0 4px 8px 3px rgba(60,64,67,0.15), 0 1px 3px rgba(60,64,67,0.3);
+            --success: #34a853;
+            --warning: #f9ab00;
+            --error: #d93025;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== THEME SYSTEM (8 THEMES) ===== */
+        .theme-material-light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --accent-primary: #1a73e8;
+            --accent-secondary: #e8f0fe;
+            --border-color: #dadce0;
+        }
+
+        .theme-material-dark {
+            --bg-primary: #202124;
+            --bg-secondary: #292a2d;
+            --bg-surface: #2d2e30;
+            --bg-card: #2d2e30;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent-primary: #8ab4f8;
+            --accent-secondary: #3c4043;
+            --border-color: #5f6368;
+        }
+
+        .theme-ocean {
+            --bg-primary: #0c1a2c;
+            --bg-secondary: #132743;
+            --bg-surface: #1a365d;
+            --bg-card: #1e3a5f;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --accent-primary: #4299e1;
+            --accent-secondary: #2d3748;
+            --border-color: #4a5568;
+        }
+
+        .theme-forest {
+            --bg-primary: #1a2c1e;
+            --bg-secondary: #223627;
+            --bg-surface: #2a4030;
+            --bg-card: #2d4532;
+            --text-primary: #e8f5e9;
+            --text-secondary: #a5d6a7;
+            --accent-primary: #4caf50;
+            --accent-secondary: #2e7d32;
+            --border-color: #388e3c;
+        }
+
+        .theme-sunset {
+            --bg-primary: #2d1b2e;
+            --bg-secondary: #3d243f;
+            --bg-surface: #4d2e50;
+            --bg-card: #543357;
+            --text-primary: #fce4ec;
+            --text-secondary: #f8bbd9;
+            --accent-primary: #ff6b8b;
+            --accent-secondary: #ad1457;
+            --border-color: #d81b60;
+        }
+
+        .theme-monochrome {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #424242;
+            --accent-primary: #616161;
+            --accent-secondary: #f5f5f5;
+            --border-color: #e0e0e0;
+        }
+
+        .theme-cyberpunk {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #141420;
+            --bg-surface: #1e1e30;
+            --bg-card: #252541;
+            --text-primary: #00ffea;
+            --text-secondary: #b19cd9;
+            --accent-primary: #ff00ff;
+            --accent-secondary: #2a0040;
+            --border-color: #7700ff;
+        }
+
+        .theme-paper {
+            --bg-primary: #f5f1e8;
+            --bg-secondary: #e8e4db;
+            --bg-surface: #fefcf7;
+            --bg-card: #fefcf7;
+            --text-primary: #3a342c;
+            --text-secondary: #6b6257;
+            --accent-primary: #8b7355;
+            --accent-secondary: #e8e4db;
+            --border-color: #d4ccc1;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code, pre {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        /* ===== LAYOUT COMPONENTS ===== */
+        header {
+            background-color: var(--bg-surface);
+            padding: 1.5rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            background-color: var(--accent-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-selector {
+            position: relative;
+        }
+
+        .theme-button {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-main);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .theme-button:hover {
+            background-color: var(--accent-secondary);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-elevated);
+            padding: 0.5rem;
+            width: 200px;
+            display: none;
+            z-index: 10;
+            margin-top: 0.5rem;
+        }
+
+        .theme-dropdown.show {
+            display: block;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-option:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .theme-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+        }
+
+        .theme-material-light .theme-preview {
+            background: linear-gradient(135deg, #ffffff 50%, #1a73e8 50%);
+        }
+
+        .theme-material-dark .theme-preview {
+            background: linear-gradient(135deg, #202124 50%, #8ab4f8 50%);
+        }
+
+        .theme-ocean .theme-preview {
+            background: linear-gradient(135deg, #0c1a2c 50%, #4299e1 50%);
+        }
+
+        .theme-forest .theme-preview {
+            background: linear-gradient(135deg, #1a2c1e 50%, #4caf50 50%);
+        }
+
+        .theme-sunset .theme-preview {
+            background: linear-gradient(135deg, #2d1b2e 50%, #ff6b8b 50%);
+        }
+
+        .theme-monochrome .theme-preview {
+            background: linear-gradient(135deg, #ffffff 50%, #616161 50%);
+        }
+
+        .theme-cyberpunk .theme-preview {
+            background: linear-gradient(135deg, #0a0a0f 50%, #ff00ff 50%);
+        }
+
+        .theme-paper .theme-preview {
+            background: linear-gradient(135deg, #f5f1e8 50%, #8b7355 50%);
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .app-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .input-section {
+                grid-column: 1;
+            }
+            
+            .output-section {
+                grid-column: 2;
+            }
+            
+            .demo-section, .guide-section {
+                grid-column: 1 / -1;
+            }
+        }
+
+        section {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        section:hover {
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            color: var(--accent-primary);
+            font-size: 1.25rem;
+        }
+
+        /* ===== INPUT SECTION ===== */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px var(--accent-secondary);
+        }
+
+        .input-hint {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .checkbox-input:checked + .checkbox-custom {
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .checkbox-input:checked + .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            font-size: 0.75rem;
+        }
+
+        .checkbox-input {
+            display: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.5rem;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-primary);
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-secondary);
+            border-color: var(--accent-primary);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            width: 36px;
+            height: 36px;
+        }
+
+        /* ===== OUTPUT SECTION ===== */
+        .output-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .output-tab {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            font-family: var(--font-main);
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .output-tab:hover {
+            color: var(--accent-primary);
+        }
+
+        .output-tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .output-content {
+            display: none;
+        }
+
+        .output-content.active {
+            display: block;
+        }
+
+        .method-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .security-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .security-bar {
+            width: 12px;
+            height: 4px;
+            background-color: var(--border-color);
+            border-radius: 2px;
+        }
+
+        .security-bar.filled {
+            background-color: var(--accent-primary);
+        }
+
+        .output-display {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            font-family: var(--font-mono);
+            word-break: break-all;
+        }
+
+        .output-display .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+
+        .snippet-container {
+            margin-top: 1.5rem;
+        }
+
+        .snippet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .snippet-code {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--text-primary);
+        }
+
+        .method-description {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--accent-secondary);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+        }
+
+        .method-description h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== DEMO SECTION ===== */
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .demo-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .demo-preview {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .demo-output {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .demo-button {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .demo-button:hover {
+            opacity: 0.9;
+        }
+
+        .demo-explanation {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        /* ===== SETTINGS SECTION ===== */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .setting-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .setting-title {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .slider-container {
+            padding: 0.5rem 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .radio-custom::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .radio-input:checked + .radio-custom {
+            border-color: var(--accent-primary);
+        }
+
+        .radio-input:checked + .radio-custom::after {
+            opacity: 1;
+        }
+
+        .radio-input {
+            display: none;
+        }
+
+        /* ===== GUIDE SECTION ===== */
+        .guide-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .guide-tab {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            font-family: var(--font-main);
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .guide-tab:hover {
+            color: var(--accent-primary);
+        }
+
+        .guide-tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .guide-content {
+            display: none;
+        }
+
+        .guide-content.active {
+            display: block;
+        }
+
+        .guide-item {
+            margin-bottom: 2rem;
+        }
+
+        .guide-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .step-list {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== CREDITS SECTION ===== */
+        .credits {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            margin-top: 2rem;
+        }
+
+        .credits p {
+            margin-bottom: 0.5rem;
+        }
+
+        .credits a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .success-message {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-weight: 500;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            section {
+                padding: 1.25rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .pulse {
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .focus-visible:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* ===== CUSTOMIZATION SYSTEM ===== */
+        .customization-panel {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .customization-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-color);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--accent-primary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .advanced-settings {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .advanced-settings.expanded {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="theme-material-light">
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Obfuscated Contact</h1>
+                    <p>Protect your contact info from spam & scrapers</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="theme-selector">
+                    <button class="theme-button btn-secondary" id="themeButton" aria-label="Select theme">
+                        <i class="fas fa-palette"></i>
+                        <span>Theme</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <div class="theme-option" data-theme="theme-material-light">
+                            <div class="theme-preview theme-material-light"></div>
+                            <span>Material Light</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-material-dark">
+                            <div class="theme-preview theme-material-dark"></div>
+                            <span>Material Dark</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-ocean">
+                            <div class="theme-preview theme-ocean"></div>
+                            <span>Ocean</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-forest">
+                            <div class="theme-preview theme-forest"></div>
+                            <span>Forest</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-sunset">
+                            <div class="theme-preview theme-sunset"></div>
+                            <span>Sunset</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-monochrome">
+                            <div class="theme-preview theme-monochrome"></div>
+                            <span>Monochrome</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-cyberpunk">
+                            <div class="theme-preview theme-cyberpunk"></div>
+                            <span>Cyberpunk</span>
+                        </div>
+                        <div class="theme-option" data-theme="theme-paper">
+                            <div class="theme-preview theme-paper"></div>
+                            <span>Paper</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="settingsToggle">
+                    <i class="fas fa-cog"></i>
+                    <span class="hide-on-mobile">Settings</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- SETTINGS PANEL (Hidden by default) -->
+        <section id="settingsPanel" class="hidden">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-cog section-icon"></i>
+                    <h2>Application Settings</h2>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="closeSettings">
+                    <i class="fas fa-times"></i>
+                    Close
+                </button>
+            </div>
+            
+            <div class="settings-grid">
+                <div class="setting-group">
+                    <h3 class="setting-title">
+                        <i class="fas fa-sliders-h"></i>
+                        Interface
+                    </h3>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>UI Density</span>
+                            <span id="densityValue">Medium</span>
+                        </div>
+                        <input type="range" min="1" max="3" value="2" class="slider" id="densitySlider">
+                    </div>
+                    
+                    <div class="radio-group mt-2">
+                        <label class="radio-label">
+                            <input type="radio" name="copyBehavior" value="select" class="radio-input" checked>
+                            <span class="radio-custom"></span>
+                            <span>Select text on copy</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="copyBehavior" value="flash" class="radio-input">
+                            <span class="radio-custom"></span>
+                            <span>Flash animation on copy</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="copyBehavior" value="both" class="radio-input">
+                            <span class="radio-custom"></span>
+                            <span>Both</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3 class="setting-title">
+                        <i class="fas fa-code"></i>
+                        Output Settings
+                    </h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autoGenerate" class="checkbox-input" checked>
+                            <span class="checkbox-custom"></span>
+                            <span>Auto-generate on input change</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="includeLinks" class="checkbox-input" checked>
+                            <span class="checkbox-custom"></span>
+                            <span>Include mailto/tel links</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showSecurity" class="checkbox-input" checked>
+                            <span class="checkbox-custom"></span>
+                            <span>Show security ratings</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3 class="setting-title">
+                        <i class="fas fa-download"></i>
+                        Data Management
+                    </h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="exportBtn">
+                            <i class="fas fa-file-export"></i>
+                            Export Settings
+                        </button>
+                        <button class="btn btn-secondary" id="importBtn">
+                            <i class="fas fa-file-import"></i>
+                            Import Settings
+                        </button>
+                        <button class="btn btn-secondary" id="resetBtn">
+                            <i class="fas fa-undo"></i>
+                            Reset All
+                        </button>
+                    </div>
+                    <input type="file" id="importFile" class="hidden" accept=".json">
+                    <p class="text-secondary mt-2" style="font-size: 0.875rem;">
+                        Export your settings to backup or transfer to another device.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="customization-panel">
+                <div class="customization-header">
+                    <h3>Advanced Customization</h3>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="advancedToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="advanced-settings" id="advancedSettings">
+                    <div class="setting-group">
+                        <h4>Custom Pattern Builder</h4>
+                        <div class="input-group">
+                            <label class="input-label">Pattern Template</label>
+                            <input type="text" class="input-field" id="patternTemplate" 
+                                   value="c[#1]@[#2].[#3]" 
+                                   placeholder="c[#1]@[#2].[#3]">
+                            <div class="input-hint">
+                                Use [#1], [#2], etc. as placeholders for email parts
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="applyPattern">
+                            <i class="fas fa-check"></i>
+                            Apply Pattern
+                        </button>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>Default Methods</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="methodUri" class="checkbox-input method-toggle" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>URI Encoding</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="methodHtml" class="checkbox-input method-toggle" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>HTML Entities</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="methodRot13" class="checkbox-input method-toggle" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>ROT13</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="methodHex" class="checkbox-input method-toggle">
+                                <span class="checkbox-custom"></span>
+                                <span>Hex Encoding</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="methodCustom" class="checkbox-input method-toggle" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Custom Pattern</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN APPLICATION GRID -->
+        <div class="app-grid">
+            <!-- INPUT SECTION -->
+            <section class="input-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-keyboard section-icon"></i>
+                        <h2>Enter Contact Information</h2>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="emailInput" class="input-label">Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="emailInput" class="input-field" 
+                               placeholder="you@example.com" 
+                               aria-describedby="emailHint">
+                    </div>
+                    <div id="emailHint" class="input-hint">
+                        Enter the email address you want to protect
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phoneInput" class="input-label">Phone Number (Optional)</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="phoneInput" class="input-field" 
+                               placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="input-hint">
+                        Include country code for best results
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeLinkCheckbox" class="checkbox-input" checked>
+                        <span class="checkbox-custom"></span>
+                        <span>Include "mailto:" and "tel:" links in generated code</span>
+                    </label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="autoCopyCheckbox" class="checkbox-input">
+                        <span class="checkbox-custom"></span>
+                        <span>Auto-copy first output to clipboard</span>
+                    </label>
+                </div>
+                
+                <div class="action-buttons mt-3">
+                    <button class="btn btn-primary" id="generateBtn">
+                        <i class="fas fa-shield-alt"></i>
+                        Generate Obfuscated Versions
+                    </button>
+                    <button class="btn btn-secondary" id="clearBtn">
+                        <i class="fas fa-eraser"></i>
+                        Clear All
+                    </button>
+                </div>
+                
+                <div class="mt-2" id="statusMessage"></div>
+            </section>
+
+            <!-- OUTPUT SECTION -->
+            <section class="output-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-code section-icon"></i>
+                        <h2>Obfuscated Outputs</h2>
+                    </div>
+                    <div class="security-rating" id="securityIndicator">
+                        <span class="text-tertiary" style="font-size: 0.875rem;">Security:</span>
+                        <div class="security-bar filled"></div>
+                        <div class="security-bar filled"></div>
+                        <div class="security-bar"></div>
+                    </div>
+                </div>
+                
+                <div class="output-tabs" id="methodTabs">
+                    <!-- Tabs will be generated by JavaScript -->
+                </div>
+                
+                <div id="outputContents">
+                    <!-- Content will be generated by JavaScript -->
+                </div>
+                
+                <div class="text-center mt-3" id="outputEmptyState">
+                    <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--text-tertiary); margin-bottom: 1rem;"></i>
+                    <h3>No Output Yet</h3>
+                    <p class="text-secondary">Enter your contact information and click "Generate Obfuscated Versions" to see protected outputs here.</p>
+                </div>
+            </section>
+
+            <!-- LIVE DEMO SECTION -->
+            <section class="demo-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-eye section-icon"></i>
+                        <h2>Live Demo & Preview</h2>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" id="refreshDemo">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh Demo
+                    </button>
+                </div>
+                
+                <div class="demo-container">
+                    <div class="demo-preview">
+                        <div class="demo-output" id="demoOutput">
+                            <!-- Demo output will be inserted here -->
+                        </div>
+                        <button class="demo-button" id="demoButton">Click to Test</button>
+                    </div>
+                    
+                    <div class="demo-explanation">
+                        <h3>How It Works</h3>
+                        <p>This demo shows how your obfuscated contact information will work on a real website.</p>
+                        <ul class="feature-list mt-2">
+                            <li>Bots see scrambled text that looks like gibberish</li>
+                            <li>Humans with JavaScript enabled can click to reveal the real address</li>
+                            <li>No special plugins or software required</li>
+                            <li>Works on all modern browsers</li>
+                        </ul>
+                        <div class="mt-2">
+                            <p><strong>Current method:</strong> <span id="currentMethodLabel">HTML Entities</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USER GUIDE SECTION -->
+            <section class="guide-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-book section-icon"></i>
+                        <h2>User Guide & Instructions</h2>
+                    </div>
+                </div>
+                
+                <div class="guide-tabs">
+                    <button class="guide-tab active" data-tab="guide-basics">Basics</button>
+                    <button class="guide-tab" data-tab="guide-methods">Methods</button>
+                    <button class="guide-tab" data-tab="guide-usage">Usage</button>
+                    <button class="guide-tab" data-tab="guide-customize">Customization</button>
+                </div>
+                
+                <div class="guide-content active" id="guide-basics">
+                    <div class="guide-item">
+                        <h3>What is Obfuscated Contact?</h3>
+                        <p>Obfuscated Contact helps protect your email address and phone number from spam bots and scrapers that harvest contact information from websites.</p>
+                        <p>Instead of displaying your real contact info, you display scrambled versions that bots can't read but real humans can access.</p>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h3>Quick Start</h3>
+                        <ol class="step-list">
+                            <li>Enter your email address (and optionally phone number) in the input section</li>
+                            <li>Click "Generate Obfuscated Versions"</li>
+                            <li>Choose an obfuscation method from the tabs</li>
+                            <li>Copy the code snippet and paste it into your website</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="guide-content" id="guide-methods">
+                    <div class="guide-item">
+                        <h3>Available Obfuscation Methods</h3>
+                        <ul class="feature-list">
+                            <li><strong>URI Encoding</strong> - Encodes special characters for use in URLs. Best for JavaScript-heavy sites.</li>
+                            <li><strong>HTML Entities</strong> - Replaces characters with HTML codes. Works on any website.</li>
+                            <li><strong>ROT13</strong> - Simple letter substitution. Creates human-readable puzzles.</li>
+                            <li><strong>Hex Encoding</strong> - Converts to hexadecimal representation. Good for advanced protection.</li>
+                            <li><strong>Custom Pattern</strong> - Create your own pattern for maximum flexibility.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h3>Security Ratings</h3>
+                        <p>Each method has a security rating (1-3 bars):</p>
+                        <ul class="feature-list">
+                            <li><strong>1 bar</strong> - Basic protection against simple bots</li>
+                            <li><strong>2 bars</strong> - Good protection against most scrapers</li>
+                            <li><strong>3 bars</strong> - Strong protection against advanced bots</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="guide-content" id="guide-usage">
+                    <div class="guide-item">
+                        <h3>How to Use on Your Website</h3>
+                        <ol class="step-list">
+                            <li>Generate your obfuscated contact information</li>
+                            <li>Copy the entire code snippet (not just the obfuscated text)</li>
+                            <li>Paste the code into your website's HTML where you want the contact link to appear</li>
+                            <li>Save and publish your website</li>
+                            <li>Test the link to make sure it works</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h3>Tips for Best Results</h3>
+                        <ul class="feature-list">
+                            <li>Use HTML Entities for maximum compatibility</li>
+                            <li>Test your contact links after publishing</li>
+                            <li>Consider using multiple methods on different pages</li>
+                            <li>Update your obfuscated info periodically for added security</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="guide-content" id="guide-customize">
+                    <div class="guide-item">
+                        <h3>Customization Options</h3>
+                        <p>Click the Settings button to access customization options:</p>
+                        <ul class="feature-list">
+                            <li><strong>Themes</strong> - Choose from 8 visually distinct themes</li>
+                            <li><strong>UI Density</strong> - Adjust spacing and sizing for your preference</li>
+                            <li><strong>Copy Behavior</strong> - Customize how copy actions work</li>
+                            <li><strong>Method Selection</strong> - Enable/disable specific obfuscation methods</li>
+                            <li><strong>Import/Export</strong> - Save and restore your settings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h3>Custom Pattern Builder</h3>
+                        <p>Create your own obfuscation pattern in the Advanced Settings:</p>
+                        <ol class="step-list">
+                            <li>Enable Advanced Settings in the Settings panel</li>
+                            <li>Enter a pattern like "c[#1]@[#2].[#3]"</li>
+                            <li>Use [#1], [#2], etc. as placeholders for email parts</li>
+                            <li>Click "Apply Pattern" to use your custom method</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CREDITS SECTION -->
+        <div class="credits">
+            <p>Obfuscated Contact v1.0.0</p>
+            <p>Fully client-side application • No data collection • No tracking</p>
+            <p class="mt-2">
+                Made with ❤️ by 
+                <a href="https://github.com/Aliriyaj007" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i>
+                    Aliriyaj007
+                </a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // ===== MODULAR APPLICATION ARCHITECTURE =====
+        // Using IIFE pattern to avoid global scope pollution
+        (function() {
+            'use strict';
+            
+            // ===== APPLICATION STATE MODULE =====
+            const AppState = (function() {
+                // Private state
+                let state = {
+                    email: '',
+                    phone: '',
+                    includeLinks: true,
+                    autoCopy: false,
+                    autoGenerate: true,
+                    showSecurity: true,
+                    currentMethod: 'html',
+                    settings: {
+                        density: 'medium',
+                        copyBehavior: 'select',
+                        enabledMethods: ['uri', 'html', 'rot13', 'custom'],
+                        customPattern: 'c[#1]@[#2].[#3]'
+                    },
+                    theme: 'theme-material-light',
+                    output: {
+                        uri: { encoded: '', snippet: '' },
+                        html: { encoded: '', snippet: '' },
+                        rot13: { encoded: '', snippet: '' },
+                        hex: { encoded: '', snippet: '' },
+                        custom: { encoded: '', snippet: '' }
+                    }
+                };
+                
+                // Public API
+                return {
+                    // Getters
+                    getEmail: () => state.email,
+                    getPhone: () => state.phone,
+                    getIncludeLinks: () => state.includeLinks,
+                    getAutoCopy: () => state.autoCopy,
+                    getAutoGenerate: () => state.autoGenerate,
+                    getShowSecurity: () => state.showSecurity,
+                    getCurrentMethod: () => state.currentMethod,
+                    getSettings: () => JSON.parse(JSON.stringify(state.settings)),
+                    getTheme: () => state.theme,
+                    getOutput: (method) => state.output[method],
+                    getAllOutputs: () => ({...state.output}),
+                    getAllEnabledMethods: () => state.settings.enabledMethods,
+                    
+                    // Setters
+                    setEmail: (value) => { state.email = value.trim(); },
+                    setPhone: (value) => { state.phone = value.trim(); },
+                    setIncludeLinks: (value) => { state.includeLinks = value; },
+                    setAutoCopy: (value) => { state.autoCopy = value; },
+                    setAutoGenerate: (value) => { state.autoGenerate = value; },
+                    setShowSecurity: (value) => { state.showSecurity = value; },
+                    setCurrentMethod: (value) => { state.currentMethod = value; },
+                    setSettings: (newSettings) => { 
+                        state.settings = { ...state.settings, ...newSettings };
+                    },
+                    setTheme: (themeName) => { 
+                        state.theme = themeName; 
+                        document.body.className = themeName;
+                    },
+                    setOutput: (method, encoded, snippet) => {
+                        if (state.output[method]) {
+                            state.output[method] = { encoded, snippet };
+                        }
+                    },
+                    
+                    // Toggle method
+                    toggleMethod: (method) => {
+                        const index = state.settings.enabledMethods.indexOf(method);
+                        if (index > -1) {
+                            state.settings.enabledMethods.splice(index, 1);
+                        } else {
+                            state.settings.enabledMethods.push(method);
+                        }
+                    },
+                    
+                    // Export state for saving
+                    exportState: () => {
+                        return JSON.stringify({
+                            settings: state.settings,
+                            theme: state.theme
+                        }, null, 2);
+                    },
+                    
+                    // Import state
+                    importState: (importedState) => {
+                        try {
+                            const parsed = JSON.parse(importedState);
+                            if (parsed.settings) state.settings = parsed.settings;
+                            if (parsed.theme) state.theme = parsed.theme;
+                            return true;
+                        } catch (e) {
+                            console.error('Failed to import state:', e);
+                            return false;
+                        }
+                    },
+                    
+                    // Reset to defaults
+                    reset: () => {
+                        state = {
+                            email: '',
+                            phone: '',
+                            includeLinks: true,
+                            autoCopy: false,
+                            autoGenerate: true,
+                            showSecurity: true,
+                            currentMethod: 'html',
+                            settings: {
+                                density: 'medium',
+                                copyBehavior: 'select',
+                                enabledMethods: ['uri', 'html', 'rot13', 'custom'],
+                                customPattern: 'c[#1]@[#2].[#3]'
+                            },
+                            theme: 'theme-material-light',
+                            output: {
+                                uri: { encoded: '', snippet: '' },
+                                html: { encoded: '', snippet: '' },
+                                rot13: { encoded: '', snippet: '' },
+                                hex: { encoded: '', snippet: '' },
+                                custom: { encoded: '', snippet: '' }
+                            }
+                        };
+                    }
+                };
+            })();
+            
+            // ===== UTILITIES MODULE =====
+            const Utilities = (function() {
+                // String manipulation functions
+                const encodeURIComponentSafe = (str) => {
+                    return encodeURIComponent(str || '');
+                };
+                
+                const encodeHTMLEntities = (str) => {
+                    return (str || '').replace(/[&<>"']/g, char => {
+                        return `&#${char.charCodeAt(0)};`;
+                    }).replace(/[@.]/g, char => {
+                        return `&#${char.charCodeAt(0)};`;
+                    });
+                };
+                
+                const rot13 = (str) => {
+                    return (str || '').replace(/[a-zA-Z]/g, char => {
+                        const code = char.charCodeAt(0);
+                        if (code >= 65 && code <= 90) {
+                            return String.fromCharCode(((code - 65 + 13) % 26) + 65);
+                        } else if (code >= 97 && code <= 122) {
+                            return String.fromCharCode(((code - 97 + 13) % 26) + 97);
+                        }
+                        return char;
+                    });
+                };
+                
+                const hexEncode = (str) => {
+                    return (str || '').split('').map(char => {
+                        return `&#x${char.charCodeAt(0).toString(16)};`;
+                    }).join('');
+                };
+                
+                const applyCustomPattern = (email, pattern) => {
+                    if (!email || !pattern) return '';
+                    
+                    const [localPart, domain] = email.split('@');
+                    if (!domain) return email;
+                    
+                    const [domainName, tld] = domain.split('.');
+                    
+                    let result = pattern;
+                    result = result.replace(/\[#1\]/g, localPart.substring(1) || '');
+                    result = result.replace(/\[#2\]/g, domainName || '');
+                    result = result.replace(/\[#3\]/g, tld || '');
+                    
+                    return result;
+                };
+                
+                // DOM utilities
+                const showMessage = (message, type = 'success', duration = 3000) => {
+                    const statusEl = document.getElementById('statusMessage');
+                    if (!statusEl) return;
+                    
+                    statusEl.textContent = message;
+                    statusEl.className = `${type}-message fade-in`;
+                    
+                    if (duration > 0) {
+                        setTimeout(() => {
+                            statusEl.textContent = '';
+                            statusEl.className = '';
+                        }, duration);
+                    }
+                };
+                
+                const copyToClipboard = async (text, behavior = 'select') => {
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        
+                        if (behavior === 'flash' || behavior === 'both') {
+                            const event = new CustomEvent('copyFlash');
+                            document.dispatchEvent(event);
+                        }
+                        
+                        return true;
+                    } catch (err) {
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.opacity = '0';
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        
+                        try {
+                            const successful = document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            
+                            if (successful && (behavior === 'flash' || behavior === 'both')) {
+                                const event = new CustomEvent('copyFlash');
+                                document.dispatchEvent(event);
+                            }
+                            
+                            return successful;
+                        } catch (err) {
+                            document.body.removeChild(textArea);
+                            return false;
+                        }
+                    }
+                };
+                
+                const debounce = (func, wait) => {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                };
+                
+                // Security rating calculator
+                const calculateSecurityRating = (method) => {
+                    const ratings = {
+                        'uri': 2,
+                        'html': 2,
+                        'rot13': 1,
+                        'hex': 3,
+                        'custom': 2
+                    };
+                    return ratings[method] || 1;
+                };
+                
+                // Public API
+                return {
+                    encodeURIComponentSafe,
+                    encodeHTMLEntities,
+                    rot13,
+                    hexEncode,
+                    applyCustomPattern,
+                    showMessage,
+                    copyToClipboard,
+                    debounce,
+                    calculateSecurityRating
+                };
+            })();
+            
+            // ===== UI MANAGEMENT MODULE =====
+            const UIManager = (function() {
+                // DOM Elements cache
+                let elements = {};
+                
+                // Initialize DOM elements
+                const initElements = () => {
+                    const elementIds = [
+                        'themeButton', 'themeDropdown', 'settingsToggle', 'settingsPanel',
+                        'closeSettings', 'emailInput', 'phoneInput', 'includeLinkCheckbox',
+                        'autoCopyCheckbox', 'generateBtn', 'clearBtn', 'methodTabs',
+                        'outputContents', 'outputEmptyState', 'securityIndicator',
+                        'demoOutput', 'demoButton', 'currentMethodLabel', 'refreshDemo',
+                        'densitySlider', 'densityValue', 'exportBtn', 'importBtn',
+                        'resetBtn', 'importFile', 'advancedToggle', 'advancedSettings',
+                        'patternTemplate', 'applyPattern', 'methodUri', 'methodHtml',
+                        'methodRot13', 'methodHex', 'methodCustom'
+                    ];
+                    
+                    elements = {};
+                    elementIds.forEach(id => {
+                        elements[id] = document.getElementById(id);
+                    });
+                };
+                
+                // Initialize method tabs
+                const initMethodTabs = () => {
+                    const methods = [
+                        { id: 'uri', name: 'URI Encoding', icon: 'fas fa-link' },
+                        { id: 'html', name: 'HTML Entities', icon: 'fas fa-code' },
+                        { id: 'rot13', name: 'ROT13', icon: 'fas fa-exchange-alt' },
+                        { id: 'hex', name: 'Hex Encoding', icon: 'fas fa-hashtag' },
+                        { id: 'custom', name: 'Custom Pattern', icon: 'fas fa-sliders-h' }
+                    ];
+                    
+                    const tabsContainer = elements.methodTabs;
+                    const outputContainer = elements.outputContents;
+                    
+                    if (!tabsContainer || !outputContainer) return;
+                    
+                    // Clear existing content
+                    tabsContainer.innerHTML = '';
+                    outputContainer.innerHTML = '';
+                    
+                    // Create tabs and content panels
+                    methods.forEach(method => {
+                        // Create tab button
+                        const tabButton = document.createElement('button');
+                        tabButton.className = 'output-tab';
+                        tabButton.dataset.method = method.id;
+                        tabButton.innerHTML = `<i class="${method.icon}"></i> ${method.name}`;
+                        
+                        // Create content panel
+                        const contentPanel = document.createElement('div');
+                        contentPanel.className = 'output-content';
+                        contentPanel.id = `output-${method.id}`;
+                        contentPanel.dataset.method = method.id;
+                        
+                        tabsContainer.appendChild(tabButton);
+                        outputContainer.appendChild(contentPanel);
+                    });
+                };
+                
+                // Update output display
+                const updateOutputDisplay = (method, data) => {
+                    const panel = document.getElementById(`output-${method}`);
+                    if (!panel) return;
+                    
+                    const securityRating = Utilities.calculateSecurityRating(method);
+                    
+                    panel.innerHTML = `
+                        <div class="method-info">
+                            <h3>${method === 'uri' ? 'URI Encoding' : 
+                                   method === 'html' ? 'HTML Entities' : 
+                                   method === 'rot13' ? 'ROT13' : 
+                                   method === 'hex' ? 'Hex Encoding' : 'Custom Pattern'}</h3>
+                            ${AppState.getShowSecurity() ? `
+                            <div class="security-rating">
+                                <span class="text-tertiary" style="font-size: 0.875rem;">Security:</span>
+                                ${Array.from({length: 3}, (_, i) => 
+                                    `<div class="security-bar ${i < securityRating ? 'filled' : ''}"></div>`
+                                ).join('')}
+                            </div>` : ''}
+                        </div>
+                        
+                        <div class="output-display">
+                            <code>${data.encoded || 'No output generated'}</code>
+                            <button class="btn btn-secondary btn-sm copy-btn" data-copy="${data.encoded || ''}">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        
+                        ${data.snippet ? `
+                        <div class="snippet-container">
+                            <div class="snippet-header">
+                                <h4>Implementation Snippet</h4>
+                                <button class="btn btn-secondary btn-sm copy-btn" data-copy="${data.snippet}">
+                                    <i class="fas fa-copy"></i> Copy Snippet
+                                </button>
+                            </div>
+                            <pre class="snippet-code">${data.snippet}</pre>
+                        </div>
+                        
+                        <div class="method-description">
+                            <h4>How to Use</h4>
+                            <p>${method === 'uri' ? 'Copy the snippet and paste it into your website\'s HTML. This method uses JavaScript to decode the email when clicked.' :
+                               method === 'html' ? 'Copy the snippet and paste it directly into your HTML. Works on any website without JavaScript.' :
+                               method === 'rot13' ? 'Copy the snippet and paste it into your website. Visitors can decode it using ROT13 or click the link.' :
+                               method === 'hex' ? 'Copy the snippet for hexadecimal encoding. Provides strong protection against bots.' :
+                               'Copy the snippet with your custom pattern. Modify the pattern in settings for different obfuscation.'}</p>
+                        </div>
+                        ` : ''}
+                    `;
+                };
+                
+                // Update demo section
+                const updateDemo = (method) => {
+                    if (!elements.demoOutput || !elements.demoButton || !elements.currentMethodLabel) return;
+                    
+                    const output = AppState.getOutput(method);
+                    const methodNames = {
+                        'uri': 'URI Encoding',
+                        'html': 'HTML Entities',
+                        'rot13': 'ROT13',
+                        'hex': 'Hex Encoding',
+                        'custom': 'Custom Pattern'
+                    };
+                    
+                    elements.currentMethodLabel.textContent = methodNames[method] || 'Unknown';
+                    
+                    if (output.encoded) {
+                        elements.demoOutput.innerHTML = `
+                            <p>Email: <code>${output.encoded}</code></p>
+                            <p class="text-secondary" style="font-size: 0.875rem; margin-top: 0.5rem;">
+                                Click the button below to test the obfuscated link
+                            </p>
+                        `;
+                        
+                        // Update demo button behavior based on method
+                        if (method === 'html') {
+                            elements.demoButton.onclick = () => {
+                                const tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = output.snippet;
+                                const link = tempDiv.querySelector('a');
+                                if (link) {
+                                    window.open(link.href, '_blank');
+                                }
+                            };
+                        } else if (method === 'uri') {
+                            elements.demoButton.onclick = () => {
+                                const email = AppState.getEmail();
+                                if (email) {
+                                    window.open(`mailto:${email}`, '_blank');
+                                }
+                            };
+                        } else {
+                            elements.demoButton.onclick = () => {
+                                Utilities.showMessage('Demo activated! On a real site, this would reveal the contact info.', 'success');
+                            };
+                        }
+                    } else {
+                        elements.demoOutput.innerHTML = `
+                            <p class="text-secondary">Generate obfuscated output to see a live demo here</p>
+                        `;
+                        elements.demoButton.onclick = () => {
+                            Utilities.showMessage('Please generate obfuscated output first', 'error');
+                        };
+                    }
+                };
+                
+                // Update security indicator
+                const updateSecurityIndicator = (method) => {
+                    if (!elements.securityIndicator) return;
+                    
+                    const rating = Utilities.calculateSecurityRating(method);
+                    elements.securityIndicator.innerHTML = `
+                        <span class="text-tertiary" style="font-size: 0.875rem;">Security:</span>
+                        ${Array.from({length: 3}, (_, i) => 
+                            `<div class="security-bar ${i < rating ? 'filled' : ''}"></div>`
+                        ).join('')}
+                    `;
+                };
+                
+                // Update UI density
+                const updateUIDensity = (density) => {
+                    const densityClasses = ['density-compact', 'density-medium', 'density-comfortable'];
+                    document.body.classList.remove(...densityClasses);
+                    
+                    if (density === 'compact') {
+                        document.body.classList.add('density-compact');
+                        document.documentElement.style.fontSize = '14px';
+                    } else if (density === 'comfortable') {
+                        document.body.classList.add('density-comfortable');
+                        document.documentElement.style.fontSize = '18px';
+                    } else {
+                        document.documentElement.style.fontSize = '16px';
+                    }
+                };
+                
+                // Toggle output empty state
+                const toggleEmptyState = (show) => {
+                    if (!elements.outputEmptyState) return;
+                    
+                    if (show) {
+                        elements.outputEmptyState.classList.remove('hidden');
+                        elements.outputContents.classList.add('hidden');
+                    } else {
+                        elements.outputEmptyState.classList.add('hidden');
+                        elements.outputContents.classList.remove('hidden');
+                    }
+                };
+                
+                // Public API
+                return {
+                    initElements,
+                    initMethodTabs,
+                    updateOutputDisplay,
+                    updateDemo,
+                    updateSecurityIndicator,
+                    updateUIDensity,
+                    toggleEmptyState,
+                    getElement: (id) => elements[id]
+                };
+            })();
+            
+            // ===== OBFUSCATION ENGINE MODULE =====
+            const ObfuscationEngine = (function() {
+                // Generate all obfuscation methods
+                const generateAll = (email, phone, includeLinks, customPattern) => {
+                    if (!email && !phone) return null;
+                    
+                    const results = {};
+                    const methods = ['uri', 'html', 'rot13', 'hex', 'custom'];
+                    
+                    methods.forEach(method => {
+                        results[method] = generateMethod(method, email, phone, includeLinks, customPattern);
+                    });
+                    
+                    return results;
+                };
+                
+                // Generate specific method
+                const generateMethod = (method, email, phone, includeLinks, customPattern) => {
+                    let encoded = '';
+                    let snippet = '';
+                    
+                    switch (method) {
+                        case 'uri':
+                            if (email) {
+                                encoded = Utilities.encodeURIComponentSafe(email);
+                                snippet = includeLinks 
+                                    ? `<a href="#" onclick="this.href='mailto:'+decodeURIComponent('${encoded}')">Email Me</a>`
+                                    : `decodeURIComponent('${encoded}')`;
+                            }
+                            if (phone) {
+                                const phoneEncoded = Utilities.encodeURIComponentSafe(phone);
+                                snippet += includeLinks 
+                                    ? `\n<a href="#" onclick="this.href='tel:'+decodeURIComponent('${phoneEncoded}')">Call Me</a>`
+                                    : `\ndecodeURIComponent('${phoneEncoded}')`;
+                            }
+                            break;
+                            
+                        case 'html':
+                            if (email) {
+                                encoded = Utilities.encodeHTMLEntities(email);
+                                snippet = includeLinks 
+                                    ? `<a href="mailto:${encoded}">Email Me</a>`
+                                    : encoded;
+                            }
+                            if (phone) {
+                                const phoneEncoded = Utilities.encodeHTMLEntities(phone);
+                                snippet += includeLinks 
+                                    ? `\n<a href="tel:${phoneEncoded}">Call Me</a>`
+                                    : `\n${phoneEncoded}`;
+                            }
+                            break;
+                            
+                        case 'rot13':
+                            if (email) {
+                                encoded = Utilities.rot13(email);
+                                snippet = includeLinks 
+                                    ? `<a href="#" onclick="this.href='mailto:'+this.innerText.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<='Z'?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);})">${encoded}</a>`
+                                    : `ROT13: ${encoded}`;
+                            }
+                            if (phone) {
+                                // ROT13 doesn't affect numbers, so we show phone as-is
+                                snippet += includeLinks 
+                                    ? `\n<a href="tel:${phone}">${phone}</a>`
+                                    : `\n${phone}`;
+                            }
+                            break;
+                            
+                        case 'hex':
+                            if (email) {
+                                encoded = Utilities.hexEncode(email);
+                                snippet = includeLinks 
+                                    ? `<a href="mailto:${email}">Email Me</a><!-- Hex: ${encoded} -->`
+                                    : encoded;
+                            }
+                            if (phone) {
+                                const phoneEncoded = Utilities.hexEncode(phone);
+                                snippet += includeLinks 
+                                    ? `\n<a href="tel:${phone}">Call Me</a><!-- Hex: ${phoneEncoded} -->`
+                                    : `\n${phoneEncoded}`;
+                            }
+                            break;
+                            
+                        case 'custom':
+                            if (email) {
+                                encoded = Utilities.applyCustomPattern(email, customPattern);
+                                snippet = includeLinks 
+                                    ? `<a href="mailto:${email}">${encoded}</a>`
+                                    : encoded;
+                            }
+                            if (phone) {
+                                snippet += includeLinks 
+                                    ? `\n<a href="tel:${phone}">${phone}</a>`
+                                    : `\n${phone}`;
+                            }
+                            break;
+                    }
+                    
+                    return { encoded, snippet };
+                };
+                
+                // Public API
+                return {
+                    generateAll,
+                    generateMethod
+                };
+            })();
+            
+            // ===== EVENT HANDLERS MODULE =====
+            const EventHandlers = (function() {
+                // Initialize all event listeners
+                const init = () => {
+                    const elements = UIManager;
+                    
+                    // Theme selection
+                    elements.getElement('themeButton')?.addEventListener('click', toggleThemeDropdown);
+                    document.querySelectorAll('.theme-option').forEach(option => {
+                        option.addEventListener('click', handleThemeChange);
+                    });
+                    
+                    // Settings panel
+                    elements.getElement('settingsToggle')?.addEventListener('click', toggleSettingsPanel);
+                    elements.getElement('closeSettings')?.addEventListener('click', toggleSettingsPanel);
+                    
+                    // Input handling
+                    elements.getElement('emailInput')?.addEventListener('input', handleInputChange);
+                    elements.getElement('phoneInput')?.addEventListener('input', handleInputChange);
+                    elements.getElement('includeLinkCheckbox')?.addEventListener('change', handleCheckboxChange);
+                    elements.getElement('autoCopyCheckbox')?.addEventListener('change', handleCheckboxChange);
+                    
+                    // Generate button
+                    elements.getElement('generateBtn')?.addEventListener('click', handleGenerate);
+                    elements.getElement('clearBtn')?.addEventListener('click', handleClear);
+                    
+                    // Method tabs (delegated)
+                    elements.getElement('methodTabs')?.addEventListener('click', handleMethodTabClick);
+                    
+                    // Copy buttons (delegated)
+                    elements.getElement('outputContents')?.addEventListener('click', handleCopyButtonClick);
+                    
+                    // Demo
+                    elements.getElement('refreshDemo')?.addEventListener('click', refreshDemo);
+                    
+                    // Settings
+                    elements.getElement('densitySlider')?.addEventListener('input', handleDensityChange);
+                    elements.getElement('exportBtn')?.addEventListener('click', handleExport);
+                    elements.getElement('importBtn')?.addEventListener('click', handleImport);
+                    elements.getElement('resetBtn')?.addEventListener('click', handleReset);
+                    elements.getElement('importFile')?.addEventListener('change', handleFileSelect);
+                    
+                    // Advanced settings
+                    elements.getElement('advancedToggle')?.addEventListener('change', toggleAdvancedSettings);
+                    elements.getElement('applyPattern')?.addEventListener('click', applyCustomPattern);
+                    
+                    // Method toggles
+                    document.querySelectorAll('.method-toggle').forEach(toggle => {
+                        toggle.addEventListener('change', handleMethodToggle);
+                    });
+                    
+                    // Radio buttons
+                    document.querySelectorAll('input[name="copyBehavior"]').forEach(radio => {
+                        radio.addEventListener('change', handleCopyBehaviorChange);
+                    });
+                    
+                    // Guide tabs
+                    document.querySelectorAll('.guide-tab').forEach(tab => {
+                        tab.addEventListener('click', handleGuideTabClick);
+                    });
+                    
+                    // Close dropdowns when clicking outside
+                    document.addEventListener('click', closeDropdowns);
+                    
+                    // Handle auto-generation
+                    const debouncedGenerate = Utilities.debounce(() => {
+                        if (AppState.getAutoGenerate() && AppState.getEmail()) {
+                            handleGenerate();
+                        }
+                    }, 500);
+                    
+                    elements.getElement('emailInput')?.addEventListener('input', debouncedGenerate);
+                    elements.getElement('phoneInput')?.addEventListener('input', debouncedGenerate);
+                    
+                    // Copy flash animation
+                    document.addEventListener('copyFlash', () => {
+                        const button = document.querySelector('.copy-btn:focus');
+                        if (button) {
+                            button.classList.add('pulse');
+                            setTimeout(() => button.classList.remove('pulse'), 500);
+                        }
+                    });
+                    
+                    // Keyboard shortcuts
+                    document.addEventListener('keydown', handleKeyboardShortcuts);
+                };
+                
+                // Event handler functions
+                const toggleThemeDropdown = (e) => {
+                    e.stopPropagation();
+                    const dropdown = UIManager.getElement('themeDropdown');
+                    dropdown?.classList.toggle('show');
+                };
+                
+                const handleThemeChange = (e) => {
+                    const theme = e.currentTarget.dataset.theme;
+                    AppState.setTheme(theme);
+                    UIManager.getElement('themeDropdown')?.classList.remove('show');
+                    Utilities.showMessage(`Theme changed to ${theme.replace('theme-', '').replace('-', ' ')}`, 'success');
+                    saveToLocalStorage();
+                };
+                
+                const toggleSettingsPanel = () => {
+                    const panel = UIManager.getElement('settingsPanel');
+                    panel?.classList.toggle('hidden');
+                };
+                
+                const handleInputChange = (e) => {
+                    const { id, value } = e.target;
+                    if (id === 'emailInput') AppState.setEmail(value);
+                    if (id === 'phoneInput') AppState.setPhone(value);
+                };
+                
+                const handleCheckboxChange = (e) => {
+                    const { id, checked } = e.target;
+                    if (id === 'includeLinkCheckbox') AppState.setIncludeLinks(checked);
+                    if (id === 'autoCopyCheckbox') AppState.setAutoCopy(checked);
+                    if (id === 'autoGenerate') AppState.setAutoGenerate(checked);
+                    if (id === 'showSecurity') AppState.setShowSecurity(checked);
+                    saveToLocalStorage();
+                };
+                
+                const handleGenerate = () => {
+                    const email = AppState.getEmail();
+                    const phone = AppState.getPhone();
+                    
+                    if (!email && !phone) {
+                        Utilities.showMessage('Please enter an email address or phone number', 'error');
+                        return;
+                    }
+                    
+                    const includeLinks = AppState.getIncludeLinks();
+                    const customPattern = AppState.getSettings().customPattern;
+                    
+                    const results = ObfuscationEngine.generateAll(email, phone, includeLinks, customPattern);
+                    
+                    if (results) {
+                        // Update state
+                        Object.keys(results).forEach(method => {
+                            AppState.setOutput(method, results[method].encoded, results[method].snippet);
+                        });
+                        
+                        // Update UI
+                        const enabledMethods = AppState.getAllEnabledMethods();
+                        enabledMethods.forEach(method => {
+                            UIManager.updateOutputDisplay(method, results[method]);
+                        });
+                        
+                        // Activate first enabled method
+                        if (enabledMethods.length > 0) {
+                            const firstMethod = enabledMethods[0];
+                            activateMethodTab(firstMethod);
+                            AppState.setCurrentMethod(firstMethod);
+                            UIManager.updateDemo(firstMethod);
+                            UIManager.updateSecurityIndicator(firstMethod);
+                        }
+                        
+                        UIManager.toggleEmptyState(false);
+                        
+                        // Auto-copy if enabled
+                        if (AppState.getAutoCopy() && enabledMethods.length > 0) {
+                            const firstResult = results[enabledMethods[0]];
+                            if (firstResult.snippet) {
+                                Utilities.copyToClipboard(firstResult.snippet, AppState.getSettings().copyBehavior);
+                                Utilities.showMessage('First output copied to clipboard!', 'success');
+                            }
+                        }
+                        
+                        Utilities.showMessage('Obfuscated versions generated successfully!', 'success');
+                    }
+                };
+                
+                const handleClear = () => {
+                    AppState.setEmail('');
+                    AppState.setPhone('');
+                    UIManager.getElement('emailInput').value = '';
+                    UIManager.getElement('phoneInput').value = '';
+                    UIManager.toggleEmptyState(true);
+                    Utilities.showMessage('All inputs cleared', 'success');
+                };
+                
+                const handleMethodTabClick = (e) => {
+                    const tab = e.target.closest('.output-tab');
+                    if (!tab) return;
+                    
+                    const method = tab.dataset.method;
+                    activateMethodTab(method);
+                    AppState.setCurrentMethod(method);
+                    UIManager.updateDemo(method);
+                    UIManager.updateSecurityIndicator(method);
+                };
+                
+                const activateMethodTab = (method) => {
+                    // Update tab buttons
+                    document.querySelectorAll('.output-tab').forEach(tab => {
+                        tab.classList.toggle('active', tab.dataset.method === method);
+                    });
+                    
+                    // Update content panels
+                    document.querySelectorAll('.output-content').forEach(panel => {
+                        panel.classList.toggle('active', panel.dataset.method === method);
+                    });
+                };
+                
+                const handleCopyButtonClick = (e) => {
+                    const copyBtn = e.target.closest('.copy-btn');
+                    if (!copyBtn) return;
+                    
+                    const text = copyBtn.dataset.copy;
+                    if (!text) return;
+                    
+                    const behavior = AppState.getSettings().copyBehavior;
+                    Utilities.copyToClipboard(text, behavior);
+                    
+                    if (behavior === 'select' || behavior === 'both') {
+                        // Highlight the text briefly
+                        const codeElement = copyBtn.closest('.output-display')?.querySelector('code');
+                        if (codeElement) {
+                            const range = document.createRange();
+                            range.selectNodeContents(codeElement);
+                            const selection = window.getSelection();
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+                            
+                            setTimeout(() => {
+                                selection.removeAllRanges();
+                            }, 1000);
+                        }
+                    }
+                    
+                    Utilities.showMessage('Copied to clipboard!', 'success');
+                };
+                
+                const refreshDemo = () => {
+                    const currentMethod = AppState.getCurrentMethod();
+                    UIManager.updateDemo(currentMethod);
+                    Utilities.showMessage('Demo refreshed', 'success');
+                };
+                
+                const handleDensityChange = (e) => {
+                    const value = parseInt(e.target.value);
+                    const densities = ['compact', 'medium', 'comfortable'];
+                    const density = densities[value - 1] || 'medium';
+                    
+                    UIManager.getElement('densityValue').textContent = density.charAt(0).toUpperCase() + density.slice(1);
+                    UIManager.updateUIDensity(density);
+                    
+                    AppState.setSettings({ density });
+                    saveToLocalStorage();
+                };
+                
+                const handleExport = () => {
+                    const data = AppState.exportState();
+                    const blob = new Blob([data], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `obfuscated-contact-settings-${new Date().toISOString().split('T')[0]}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    Utilities.showMessage('Settings exported successfully!', 'success');
+                };
+                
+                const handleImport = () => {
+                    UIManager.getElement('importFile')?.click();
+                };
+                
+                const handleFileSelect = (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const success = AppState.importState(event.target.result);
+                        if (success) {
+                            loadSettingsFromState();
+                            Utilities.showMessage('Settings imported successfully!', 'success');
+                            saveToLocalStorage();
+                        } else {
+                            Utilities.showMessage('Failed to import settings. Invalid file format.', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                    
+                    // Reset file input
+                    e.target.value = '';
+                };
+                
+                const handleReset = () => {
+                    if (confirm('Are you sure you want to reset all settings to defaults? This cannot be undone.')) {
+                        AppState.reset();
+                        loadSettingsFromState();
+                        Utilities.showMessage('All settings reset to defaults', 'success');
+                        saveToLocalStorage();
+                    }
+                };
+                
+                const toggleAdvancedSettings = (e) => {
+                    const advancedSettings = UIManager.getElement('advancedSettings');
+                    if (e.target.checked) {
+                        advancedSettings?.classList.add('expanded');
+                    } else {
+                        advancedSettings?.classList.remove('expanded');
+                    }
+                };
+                
+                const applyCustomPattern = () => {
+                    const pattern = UIManager.getElement('patternTemplate')?.value;
+                    if (pattern) {
+                        AppState.setSettings({ customPattern: pattern });
+                        saveToLocalStorage();
+                        
+                        // Regenerate outputs if we have email
+                        if (AppState.getEmail()) {
+                            handleGenerate();
+                        }
+                        
+                        Utilities.showMessage('Custom pattern applied!', 'success');
+                    }
+                };
+                
+                const handleMethodToggle = (e) => {
+                    const methodMap = {
+                        'methodUri': 'uri',
+                        'methodHtml': 'html',
+                        'methodRot13': 'rot13',
+                        'methodHex': 'hex',
+                        'methodCustom': 'custom'
+                    };
+                    
+                    const method = methodMap[e.target.id];
+                    if (method) {
+                        AppState.toggleMethod(method);
+                        saveToLocalStorage();
+                        
+                        // Regenerate if we have data
+                        if (AppState.getEmail()) {
+                            handleGenerate();
+                        }
+                    }
+                };
+                
+                const handleCopyBehaviorChange = (e) => {
+                    AppState.setSettings({ copyBehavior: e.target.value });
+                    saveToLocalStorage();
+                };
+                
+                const handleGuideTabClick = (e) => {
+                    const tab = e.currentTarget;
+                    const tabId = tab.dataset.tab;
+                    
+                    // Update tab buttons
+                    document.querySelectorAll('.guide-tab').forEach(t => {
+                        t.classList.toggle('active', t === tab);
+                    });
+                    
+                    // Update content panels
+                    document.querySelectorAll('.guide-content').forEach(content => {
+                        content.classList.toggle('active', content.id === `guide-${tabId}`);
+                    });
+                };
+                
+                const closeDropdowns = (e) => {
+                    if (!e.target.closest('.theme-selector')) {
+                        UIManager.getElement('themeDropdown')?.classList.remove('show');
+                    }
+                };
+                
+                const handleKeyboardShortcuts = (e) => {
+                    // Ctrl/Cmd + Enter to generate
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                        e.preventDefault();
+                        handleGenerate();
+                    }
+                    
+                    // Ctrl/Cmd + E to export
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+                        e.preventDefault();
+                        handleExport();
+                    }
+                    
+                    // Ctrl/Cmd + , to open settings
+                    if ((e.ctrlKey || e.metaKey) && e.key === ',') {
+                        e.preventDefault();
+                        toggleSettingsPanel();
+                    }
+                    
+                    // Escape to close settings
+                    if (e.key === 'Escape') {
+                        UIManager.getElement('settingsPanel')?.classList.add('hidden');
+                    }
+                };
+                
+                // Helper function to load settings from state to UI
+                const loadSettingsFromState = () => {
+                    const settings = AppState.getSettings();
+                    const theme = AppState.getTheme();
+                    
+                    // Update theme
+                    AppState.setTheme(theme);
+                    
+                    // Update density slider
+                    const densityMap = { 'compact': 1, 'medium': 2, 'comfortable': 3 };
+                    const densitySlider = UIManager.getElement('densitySlider');
+                    const densityValue = UIManager.getElement('densityValue');
+                    if (densitySlider && densityValue) {
+                        const value = densityMap[settings.density] || 2;
+                        densitySlider.value = value;
+                        densityValue.textContent = settings.density.charAt(0).toUpperCase() + settings.density.slice(1);
+                        UIManager.updateUIDensity(settings.density);
+                    }
+                    
+                    // Update copy behavior radio
+                    document.querySelectorAll('input[name="copyBehavior"]').forEach(radio => {
+                        radio.checked = radio.value === settings.copyBehavior;
+                    });
+                    
+                    // Update method toggles
+                    const methodCheckboxes = {
+                        'uri': 'methodUri',
+                        'html': 'methodHtml',
+                        'rot13': 'methodRot13',
+                        'hex': 'methodHex',
+                        'custom': 'methodCustom'
+                    };
+                    
+                    Object.entries(methodCheckboxes).forEach(([method, checkboxId]) => {
+                        const checkbox = document.getElementById(checkboxId);
+                        if (checkbox) {
+                            checkbox.checked = settings.enabledMethods.includes(method);
+                        }
+                    });
+                    
+                    // Update custom pattern
+                    const patternInput = UIManager.getElement('patternTemplate');
+                    if (patternInput) {
+                        patternInput.value = settings.customPattern;
+                    }
+                    
+                    // Update other checkboxes
+                    const autoGenerate = UIManager.getElement('autoGenerate');
+                    const includeLinks = UIManager.getElement('includeLinks');
+                    const showSecurity = UIManager.getElement('showSecurity');
+                    
+                    if (autoGenerate) autoGenerate.checked = AppState.getAutoGenerate();
+                    if (includeLinks) includeLinks.checked = AppState.getIncludeLinks();
+                    if (showSecurity) showSecurity.checked = AppState.getShowSecurity();
+                };
+                
+                // Save to localStorage
+                const saveToLocalStorage = () => {
+                    try {
+                        const state = {
+                            settings: AppState.getSettings(),
+                            theme: AppState.getTheme(),
+                            includeLinks: AppState.getIncludeLinks(),
+                            autoGenerate: AppState.getAutoGenerate(),
+                            showSecurity: AppState.getShowSecurity()
+                        };
+                        localStorage.setItem('obfuscatedContact', JSON.stringify(state));
+                    } catch (e) {
+                        console.error('Failed to save to localStorage:', e);
+                    }
+                };
+                
+                // Load from localStorage
+                const loadFromLocalStorage = () => {
+                    try {
+                        const saved = localStorage.getItem('obfuscatedContact');
+                        if (saved) {
+                            const parsed = JSON.parse(saved);
+                            
+                            if (parsed.theme) AppState.setTheme(parsed.theme);
+                            if (parsed.settings) AppState.setSettings(parsed.settings);
+                            if (parsed.includeLinks !== undefined) AppState.setIncludeLinks(parsed.includeLinks);
+                            if (parsed.autoGenerate !== undefined) AppState.setAutoGenerate(parsed.autoGenerate);
+                            if (parsed.showSecurity !== undefined) AppState.setShowSecurity(parsed.showSecurity);
+                            
+                            loadSettingsFromState();
+                            return true;
+                        }
+                    } catch (e) {
+                        console.error('Failed to load from localStorage:', e);
+                    }
+                    return false;
+                };
+                
+                // Public API
+                return {
+                    init,
+                    loadFromLocalStorage,
+                    saveToLocalStorage,
+                    loadSettingsFromState
+                };
+            })();
+            
+            // ===== INITIALIZATION =====
+            const init = () => {
+                // Initialize UI elements
+                UIManager.initElements();
+                UIManager.initMethodTabs();
+                
+                // Load saved state
+                EventHandlers.loadFromLocalStorage();
+                
+                // Initialize event handlers
+                EventHandlers.init();
+                
+                // Set initial empty state
+                UIManager.toggleEmptyState(true);
+                
+                // Initialize demo
+                UIManager.updateDemo('html');
+                
+                // Set focus to email input
+                setTimeout(() => {
+                    UIManager.getElement('emailInput')?.focus();
+                }, 100);
+                
+                console.log('Obfuscated Contact initialized successfully!');
+            };
+            
+            // Initialize when DOM is loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            // Expose minimal public API for debugging if needed
+            window.App = {
+                AppState,
+                Utilities,
+                UIManager,
+                ObfuscationEngine
+            };
+        })();
+    </script>
+</body>
+</html>
